@@ -8,11 +8,11 @@ class BooksApi:
     API_CLIENTS_ENDPOINT = "/api-clients/"
 
 
-    def _get_api_clients_route(self):
+    def get_api_clients_route(self):
         return self.BASE_URL + self.API_CLIENTS_ENDPOINT
 
     def post_api_clients(self):
-        URL = self._get_api_clients_route()
+        URL = self.get_api_clients_route()
 
         # declare a random number to prevent error when creating a new user
         random_number = random.randint(1, 9999999999999999999)

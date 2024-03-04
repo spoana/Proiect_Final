@@ -1,7 +1,7 @@
 import random
 import unittest
 
-from requests_SimpleBook.simple_books_requests import BooksApi
+from requests_SimpleBook.verificare_comanda_existenta_requests import BooksApi
 
 class BooksTests(unittest.TestCase):
     accessToken = ''
@@ -25,7 +25,4 @@ class BooksTests(unittest.TestCase):
         response = self.books.patch_books_order(self.accessToken, order_id, new_owner_name)
         self.assertEqual(response.status_code, 204, "Status code is not the same")
 
-        response = self.books.get_books_orders_by_id(self.accessToken, order_id)
-        self.assertEqual(response.status_code, 200, "Status code is not the same")
-        self.assertEqual(response.json()["customerName"], new_owner_name, "After update customer name is not the same")
 

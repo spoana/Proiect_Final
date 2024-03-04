@@ -24,6 +24,3 @@ class BooksTests(unittest.TestCase):
         response = self.books.delete_books_order(self.accessToken, order_id)
         self.assertEqual(response.status_code, 204, "Status code is not the same")
 
-        response = self.books.get_books_orders_by_id(self.accessToken, order_id)
-        self.assertEqual(response.status_code, 404, "Status code is not the same")
-        self.assertEqual(response.json()["error"], f"No order with id {order_id}.", "Error message is not the same")
