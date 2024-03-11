@@ -4,10 +4,14 @@ import random
 
 class BooksApi:
     BASE_URL = "https://simple-books-api.glitch.me"
+    ORDERS_ENDPOINT = "/orders"
     API_CLIENTS_ENDPOINT = "/api-clients/"
 
     def get_api_clients_route(self):
         return self.BASE_URL + self.API_CLIENTS_ENDPOINT
+
+    def get_orders_route(self):
+        return self.BASE_URL + self.ORDERS_ENDPOINT
 
     def post_api_clients(self):
         url = self.get_api_clients_route()
@@ -21,3 +25,16 @@ class BooksApi:
         }
 
         return requests.post(url, json=body)
+
+    def patch_books_order(self, access_token, order_id, new_value):
+        url = self.get_orders_route() + f"/{order_id}"
+
+        headers = {
+            'Authorization': f'Bearer {access_token}'
+        }
+
+        body = {
+            "customerName": new_value
+        }
+
+        return requests.patch(url, json=body, headers=headers)
